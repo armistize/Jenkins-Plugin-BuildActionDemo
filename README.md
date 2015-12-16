@@ -6,6 +6,12 @@ This project contains a sample **Maven project** that demonstrates how to add ne
 > **Tip:** If you are new to Jenkins plugin development please see [Detailed guides](https://github.com/armistize/Jenkins-Plugin-BuildActionDemo#detailed-guides) topic first.
 >
 
+#Building a Plugin
+To build a plugin, run mvn install. This will create the file ./target/pluginname.hpi that you can deploy to Jenkins.
+```
+$ mvn clean install
+```
+
 #Add build action
 in ProjectProperty.java
 ```
