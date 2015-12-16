@@ -37,11 +37,11 @@ in BuildAction.java
 	public String getTextBoxValue() {
 		return textBoxValue;
 	}
-	
+```
+
 >
 > **Note:** `BuildAction.java` is linked to `*.jelly` in BuildAction folder
 >
-```
 
 #Detailed guides
 [Jenkins Plugin tutorial](https://wiki.jenkins-ci.org/display/JENKINS/Plugin+tutorial)  
@@ -49,7 +49,6 @@ in BuildAction.java
 [Jenkins JavaDocs](http://javadoc.jenkins-ci.org/)  
 
 #License
--------------
 >The MIT License (MIT)
 
 >Copyright (c) 2015 Tawit K.
