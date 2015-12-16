@@ -1,24 +1,70 @@
-# Jenkins-Plugin-Development
 
-#LICENSE
-The MIT License (MIT)
+#Introduction
+-------------
+This project contains a sample **Maven project** that demonstrates how to add new configuration to Jenkins job configuration. When the configuration is enabled,  you can see a new action button icon in Build section (for Jenkins and Hudson).
 
-Copyright (c) 2015 Tawit K.
+>
+> **Tip:** If you are new to Jenkins plugin development please see Detailed guides topic first.
+>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+#Add build action
+-------------
+in ProjectProperty.java
+```
+    @Override
+    public boolean perform(AbstractBuild<?, ?> build, 
+		Launcher launcher, BuildListener listener) {
+        if(enable) {
+	    	JobAction action = new JobAction();
+	        build.getActions().add(action);
+        }
+    	return true;
+    }
+```
+#Data Binding
+-------------
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+>
+> **Note:** `jobAction.java` is linked to `*.jelly` in jobAction folder
+>
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+in **/JobAction/index.jelly
+```
+	<f:entry title="Text Box Title" >
+		<f:textbox
+			field="field" name="text_box_name"
+			value="${it.getTextBoxValue()}"/>
+	</f:entry>
+```
+
+in JobAction.java
+```
+	private String textBoxValue;
+	
+	public String getTextBoxValue() {
+		return textBoxValue;
+	}
+```
+#Detailed guides
+-------------
+[Jenkins Plugin tutorial](https://wiki.jenkins-ci.org/display/JENKINS/Plugin+tutorial)
+[Maven Tutorial](http://www.tutorialspoint.com/maven/)
+[Jenkins JavaDocs](http://javadoc.jenkins-ci.org/)
+
+#License
+-------------
+>The MIT License (MIT)
+
+>Copyright (c) 2015 Tawit K.
+
+>Permission is hereby granted, free of charge, to any person obtaining a copy
+>of this software and associated documentation files (the "Software"), to deal
+>in the Software without restriction, including without limitation the rights
+>to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+>copies of the Software, and to permit persons to whom the Software is
+>furnished to do so, subject to the following conditions:
+
+>The above copyright notice and this permission notice shall be included in all
+>copies or substantial portions of the Software.
+
+>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
