@@ -1,34 +1,27 @@
 
 #Introduction
--------------
 This project contains a sample **Maven project** that demonstrates how to add new configuration to Jenkins job configuration. When the configuration is enabled,  you can see a new action button icon in Build section (for Jenkins and Hudson).
 
 >
-> **Tip:** If you are new to Jenkins plugin development please see Detailed guides topic first.
+> **Tip:** If you are new to Jenkins plugin development please see [Detailed guides](https://github.com/armistize/Jenkins-Plugin-BuildActionDemo#detailed-guides) topic first.
 >
 
 #Add build action
--------------
 in ProjectProperty.java
 ```
     @Override
     public boolean perform(AbstractBuild<?, ?> build, 
 		Launcher launcher, BuildListener listener) {
         if(enable) {
-	    	JobAction action = new JobAction();
+	    	BuildAction action = new BuildAction();
 	        build.getActions().add(action);
         }
     	return true;
     }
 ```
+
 #Data Binding
--------------
-
->
-> **Note:** `jobAction.java` is linked to `*.jelly` in jobAction folder
->
-
-in **/JobAction/index.jelly
+in **/BuildAction/index.jelly
 ```
 	<f:entry title="Text Box Title" >
 		<f:textbox
@@ -37,19 +30,23 @@ in **/JobAction/index.jelly
 	</f:entry>
 ```
 
-in JobAction.java
+in BuildAction.java
 ```
 	private String textBoxValue;
 	
 	public String getTextBoxValue() {
 		return textBoxValue;
 	}
+	
+>
+> **Note:** `BuildAction.java` is linked to `*.jelly` in BuildAction folder
+>
 ```
+
 #Detailed guides
--------------
-[Jenkins Plugin tutorial](https://wiki.jenkins-ci.org/display/JENKINS/Plugin+tutorial)
-[Maven Tutorial](http://www.tutorialspoint.com/maven/)
-[Jenkins JavaDocs](http://javadoc.jenkins-ci.org/)
+[Jenkins Plugin tutorial](https://wiki.jenkins-ci.org/display/JENKINS/Plugin+tutorial)  
+[Maven Tutorial](http://www.tutorialspoint.com/maven/)  
+[Jenkins JavaDocs](http://javadoc.jenkins-ci.org/)  
 
 #License
 -------------
