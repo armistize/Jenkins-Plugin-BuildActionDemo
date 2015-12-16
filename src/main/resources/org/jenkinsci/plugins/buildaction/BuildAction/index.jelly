@@ -1,0 +1,29 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define"
+	xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+	<l:layout title="<Your Plugin Name>" norefresh="true" permission="${it.permission}" >
+		<l:side-panel>
+			<l:tasks>
+				<l:task icon="images/24x24/up.gif" href="${rootURL}/"
+					title="${%Back to Dashboard}" />
+			</l:tasks>
+		</l:side-panel>
+		<l:main-panel>
+			<div style="padding:1em">
+			<f:form method="post" action="configSubmit" name="<you action name>">
+			    <h2>${%<Your Plugin Name>}</h2>
+			    
+							<f:entry title="Text Box Title" >
+								<f:textbox field="field" name="text_box_name" value="${it.getTextBoxValue()}"/>
+							</f:entry>
+
+							<f:entry>
+								<f:submit value="${%Execute}" />
+							</f:entry>
+			</f:form>
+			</div>
+		</l:main-panel>
+	</l:layout>
+</j:jelly>
+
+
