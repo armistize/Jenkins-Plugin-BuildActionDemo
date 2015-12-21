@@ -1,12 +1,8 @@
 /**
- * 
+ * @author tawit_k
  */
 package org.jenkinsci.plugins.buildaction;
 
-/**
- * @author tawit_k
- *
- */
 public final class Constants {
 	 public static final String DISPLAY_NAME = "Enable <Your Plugin Name>";
 	 public static final String OPTINAL_BLOCK_NAME = "optionalBlock";
