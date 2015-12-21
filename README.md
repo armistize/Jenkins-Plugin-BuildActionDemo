@@ -14,7 +14,7 @@ $ mvn clean install
 
 #Add build action
 in ProjectProperty.java
-```
+```JAVA
     @Override
     public boolean perform(AbstractBuild<?, ?> build, 
 		Launcher launcher, BuildListener listener) {
@@ -28,7 +28,7 @@ in ProjectProperty.java
 
 #Data Binding
 in **/BuildAction/index.jelly
-```
+```XML
 	<f:entry title="Text Box Title" >
 		<f:textbox
 			field="field" name="text_box_name"
@@ -37,8 +37,10 @@ in **/BuildAction/index.jelly
 ```
 
 in BuildAction.java
-```
+```JAVA
 	private String textBoxValue;
+	
+	.....
 	
 	public String getTextBoxValue() {
 		return textBoxValue;
